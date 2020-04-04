@@ -8,7 +8,6 @@ import numpy as np
 import os
 import shutil
 import sys
-import logging
 
 from autolab_core.constants import *
 import autolab_core.utils as utils
