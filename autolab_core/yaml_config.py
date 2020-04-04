@@ -48,11 +48,6 @@ class YamlConfig(object):
         """
         self.config.update(d)
 
-    def get(self, key, default=None):
-        """Allows for get method like python dict.
-        """
-        return self.config.get(key, default)
-
     def __contains__(self, key):
         """Overrides 'in' operator.
         """
@@ -75,8 +70,7 @@ class YamlConfig(object):
 
     def save(self, filename):
         """ Save a YamlConfig to disk. """
-        y = yaml.YAML()
-        y.dump(self.config, open(filename, 'w'))
+        yaml.dump(self, open(filename, 'w'))
 
     def _load_config(self, filename):
         """Loads a yaml configuration file from the given filename.
@@ -97,7 +91,7 @@ class YamlConfig(object):
         def recursive_load(matchobj, path):
             first_spacing = matchobj.group(1)
             other_spacing = first_spacing.replace('-', ' ')
-            fname = os.path.join(path, matchobj.group(2).rstrip())
+            fname = os.path.join(path, matchobj.group(2))
             new_path, _ = os.path.split(fname)
             new_path = os.path.realpath(new_path)
             text = ''

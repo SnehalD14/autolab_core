@@ -3,8 +3,11 @@ Class to sync and rate limit multiple DataStreamRecorders
 Author: Jacky Liang
 """
 from multiprocess import Process, Queue
-from six.moves.queue import Empty
 from time import time
+try:
+    from Queue import Empty
+except:
+    from queue import Empty
 import logging, sys
 from setproctitle import setproctitle
 

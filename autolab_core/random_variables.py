@@ -167,6 +167,7 @@ class ArtificialRV(RandomVariable):
         """
         self.obj_ = obj
         super(ArtificialRV, self).__init__(*args, **kwargs)
+        
 
     def sample(self, size=1):
         """Generate copies of the artifical RV.
